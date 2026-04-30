@@ -1,191 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASTRUM TENEBRIS v2 · ALL HALLOWS</title>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@400;700&display=swap');
-
-:root {
-  --bg: #0a0008;
-  --bg2: #08000d;
-  --bg3: rgba(20,0,30,0.7);
-  --border: #3a0055;
-  --border2: #2a0033;
-  --accent: #cc44ff;
-  --accent2: #ff6600;
-  --dim: #5a006a;
-  --dim2: #441155;
-  --text: #a066cc;
-  --text2: #884499;
-  --glow: rgba(180,0,255,0.4);
-  --scan-col: rgba(180,0,255,0.1);
-}
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Cinzel:wght@400;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{background:var(--bg);min-height:100vh;font-family:'VT323',monospace;}
-
-.wrap{
-  background:var(--bg2);
-  padding:1rem;
-  border-radius:6px;
-  position:relative;
-  overflow:hidden;
-  max-width:900px;
-  margin:0 auto;
-}
-.wrap::before{
-  content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(160,0,255,0.018) 3px,rgba(160,0,255,0.018) 4px);
-  pointer-events:none;z-index:30;
-}
-.wrap::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,0.8) 100%);
-  pointer-events:none;z-index:31;
-}
-.scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--scan-col),transparent);animation:sc 9s linear infinite;pointer-events:none;z-index:33;}
-@keyframes sc{0%{top:0}100%{top:100%}}
-
-/* HEADER */
-.hdr{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:0.6rem;margin-bottom:0.75rem;position:relative;z-index:32;}
-.title{font-family:'Cinzel Decorative',serif;font-size:16px;letter-spacing:3px;color:var(--accent);text-shadow:0 0 10px var(--accent),0 0 20px var(--glow);}
-.subtitle{font-size:11px;color:var(--dim);letter-spacing:2px;margin-top:2px;}
-.clk{font-size:20px;color:var(--accent2);text-shadow:0 0 8px var(--accent2);letter-spacing:2px;}
-
-/* MODE SWITCHER */
-.mode-bar{display:flex;align-items:center;gap:0.5rem;position:relative;z-index:32;margin-bottom:0.75rem;border:1px solid var(--border);padding:0.4rem 0.6rem;background:rgba(10,0,20,0.6);}
-.mode-label{font-size:11px;color:var(--dim);letter-spacing:2px;margin-right:4px;}
-.mode-btn{
-  font-family:'VT323',monospace;font-size:13px;letter-spacing:1px;
-  padding:3px 12px;border:1px solid var(--border);background:transparent;
-  color:var(--dim);cursor:pointer;transition:all 0.2s;
-}
-.mode-btn.active{
-  border-color:var(--accent);color:var(--accent);
-  background:rgba(180,0,255,0.1);
-  text-shadow:0 0 6px var(--accent);
-  box-shadow:0 0 8px rgba(180,0,255,0.2);
-}
-.mode-btn:hover:not(.active){color:var(--text);border-color:var(--text2);}
-.mode-sep{width:1px;height:18px;background:var(--border);margin:0 4px;}
-.aspect-toggle{font-size:11px;color:var(--dim);letter-spacing:1px;margin-left:auto;display:flex;align-items:center;gap:6px;}
-.toggle-cb{accent-color:var(--accent);width:13px;height:13px;cursor:pointer;}
-.mode-badge{
-  font-size:10px;padding:2px 8px;border:1px solid var(--accent);
-  color:var(--accent);background:rgba(180,0,255,0.08);letter-spacing:1px;
-  margin-left:auto;animation:pulse-badge 2s ease-in-out infinite;
-}
-@keyframes pulse-badge{0%,100%{opacity:0.7}50%{opacity:1;box-shadow:0 0 8px rgba(180,0,255,0.3)}}
-
-/* BODY */
+body{background:#0a0008;}
+.wrap{background:#08000d;font-family:'VT323',monospace;padding:1rem;border-radius:6px;position:relative;overflow:hidden;}
+.wrap::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(160,0,255,0.018) 3px,rgba(160,0,255,0.018) 4px);pointer-events:none;z-index:30;}
+.wrap::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,0.8) 100%);pointer-events:none;z-index:31;}
+.hdr{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #3a0055;padding-bottom:0.6rem;margin-bottom:1rem;position:relative;z-index:32;}
+.title{font-family:'Cinzel',serif;font-size:18px;letter-spacing:4px;color:#cc44ff;text-shadow:0 0 10px #cc44ff,0 0 20px rgba(180,0,255,0.4);}
+.subtitle{font-size:12px;color:#5a006a;letter-spacing:2px;margin-top:2px;}
+.mode-toggle{display:inline-flex;margin-top:8px;border:1px solid #3a0055;border-radius:2px;overflow:hidden;background:rgba(20,0,30,0.6);}
+.mbtn{background:transparent;border:0;color:#5a006a;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;padding:4px 10px;cursor:pointer;transition:all 0.2s;}
+.mbtn:hover{color:#aa44cc;background:rgba(80,0,120,0.2);}
+.mbtn.active{background:rgba(120,0,160,0.25);color:#cc44ff;text-shadow:0 0 6px rgba(204,68,255,0.6);}
+.mbtn+.mbtn{border-left:1px solid #3a0055;}
+.clk{font-size:20px;color:#ff6600;text-shadow:0 0 8px #ff6600;letter-spacing:2px;}
 .body-wrap{display:flex;gap:1rem;position:relative;z-index:32;}
 .wheel-col{flex:0 0 auto;}
-.side-col{flex:1;display:flex;flex-direction:column;gap:0.6rem;min-width:0;}
-
-/* PANELS */
-.pnl{border:1px solid var(--border);padding:0.55rem 0.7rem;background:var(--bg3);position:relative;}
-.plbl{font-size:10px;letter-spacing:2px;color:var(--dim);position:absolute;top:-7px;left:8px;background:var(--bg2);padding:0 4px;}
-.pnl-new{border-color:#6600aa;}
-.pnl-new .plbl{color:#9922cc;}
-
-/* PLANET TABLE */
-.planet-table{width:100%;border-collapse:collapse;font-size:12px;}
-.planet-table td{padding:1px 3px;vertical-align:middle;}
+.side-col{flex:1;display:flex;flex-direction:column;gap:0.75rem;min-width:0;}
+.pnl{border:1px solid #3a0055;padding:0.6rem 0.75rem;background:rgba(20,0,30,0.7);position:relative;}
+.plbl{font-size:11px;letter-spacing:2px;color:#5a006a;position:absolute;top:-7px;left:8px;background:#08000d;padding:0 4px;}
+.planet-table{width:100%;border-collapse:collapse;font-size:13px;}
+.planet-table td{padding:2px 4px;vertical-align:middle;}
 .planet-table tr:nth-child(odd) td{background:rgba(80,0,100,0.12);}
-.planet-table tr.new-body td{background:rgba(100,0,160,0.08);}
-.planet-table tr.new-body .pname{color:#9922cc;}
-.glyph{font-size:15px;width:20px;}
-.pname{color:var(--text);width:68px;}
-.psign{color:var(--accent2);}
-.pdeg{color:var(--accent);text-align:right;}
-.retro{color:#ff3366;font-size:10px;margin-left:2px;}
-.new-tag{font-size:9px;color:#9922cc;letter-spacing:1px;border:1px solid #6600aa;padding:0 3px;margin-left:3px;}
-
-/* ASPECTS */
-.aspect-row{display:flex;align-items:center;gap:5px;padding:1px 0;font-size:12px;}
-.asym{width:18px;text-align:center;font-size:14px;}
-.aname{color:var(--text2);flex:1;}
-.aorb{color:var(--dim);font-size:10px;}
-
-/* ELEMENTS / MODES */
+.glyph{font-size:16px;width:22px;}
+.pname{color:#a066cc;width:70px;}
+.psign{color:#ff6600;}
+.pdeg{color:#cc44ff;text-align:right;}
+.aspect-row{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:12px;}
+.asym{width:18px;text-align:center;font-size:15px;}
+.aname{color:#884499;flex:1;}
+.aorb{color:#5a006a;font-size:11px;}
 .elem-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;}
-.elem-badge{font-size:11px;padding:2px 7px;border:1px solid;letter-spacing:1px;}
-
-/* READING */
-.info-box{background:rgba(30,0,45,0.8);border:1px solid var(--border);padding:0.5rem;font-size:12px;color:var(--text);min-height:56px;line-height:1.6;}
-.info-title{color:var(--accent2);font-size:13px;letter-spacing:1px;margin-bottom:3px;}
-
-/* FOOTER */
-.ftr{font-size:10px;color:#3a0044;letter-spacing:1px;border-top:1px solid var(--border2);margin-top:0.6rem;padding-top:0.4rem;display:flex;justify-content:space-between;position:relative;z-index:32;flex-wrap:wrap;gap:4px;}
+.elem-badge{font-size:11px;padding:2px 8px;border:1px solid;letter-spacing:1px;}
+.scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,rgba(180,0,255,0.1),transparent);animation:sc 9s linear infinite;pointer-events:none;z-index:33;}
+@keyframes sc{0%{top:0}100%{top:100%}}
+.ftr{font-size:11px;color:#3a0044;letter-spacing:1px;border-top:1px solid #2a0033;margin-top:0.75rem;padding-top:0.4rem;display:flex;justify-content:space-between;position:relative;z-index:32;}
 .blink{animation:bl 1.2s step-end infinite;}
 @keyframes bl{50%{opacity:0}}
-
-/* CHIRON BADGE on wheel */
-.new-planet-indicator{position:absolute;bottom:4px;left:4px;font-size:9px;color:#6600aa;letter-spacing:1px;background:var(--bg2);padding:2px 5px;border:1px solid #440066;}
-
-/* scrollable table */
-.table-scroll{max-height:230px;overflow-y:auto;}
-.table-scroll::-webkit-scrollbar{width:4px;}
-.table-scroll::-webkit-scrollbar-track{background:transparent;}
-.table-scroll::-webkit-scrollbar-thumb{background:#3a0055;}
-
-/* aspects scroll */
-.asp-scroll{max-height:120px;overflow-y:auto;}
-.asp-scroll::-webkit-scrollbar{width:4px;}
-.asp-scroll::-webkit-scrollbar-track{background:transparent;}
-.asp-scroll::-webkit-scrollbar-thumb{background:#3a0055;}
-
-/* tooltip */
-.tooltip{position:fixed;font-family:'VT323',monospace;font-size:12px;color:#cc44ff;background:rgba(8,0,13,0.95);border:1px solid #3a0055;padding:4px 8px;pointer-events:none;z-index:9999;letter-spacing:1px;display:none;}
+.info-box{background:rgba(30,0,45,0.8);border:1px solid #3a0055;padding:0.5rem;font-size:12px;color:#a066cc;min-height:48px;line-height:1.6;}
+.info-title{color:#ff6600;font-size:13px;letter-spacing:1px;margin-bottom:3px;}
 </style>
-</head>
-<body>
+
 <div class="wrap">
   <div class="scan"></div>
-  <div class="tooltip" id="tooltip"></div>
-
-  <!-- HEADER -->
   <div class="hdr">
     <div>
       <div class="title">☽ ASTRUM TENEBRIS ☽</div>
-      <div class="subtitle">NATAL WHEEL · OCCULT CELESTIAL ARRAY · ALL HALLOWS · v2</div>
+      <div class="subtitle">TRANSIT WHEEL · OCCULT CELESTIAL ARRAY · LIVE</div>
+      <div class="mode-toggle" id="mtoggle" role="radiogroup" aria-label="Planet set">
+        <button type="button" class="mbtn" data-mode="classic" role="radio" aria-checked="false">CLASSIC</button>
+        <button type="button" class="mbtn active" data-mode="modern" role="radio" aria-checked="true">MODERN</button>
+      </div>
     </div>
     <div style="text-align:right">
       <div class="clk" id="clk">00:00:00</div>
-      <div style="font-size:10px;color:var(--dim);letter-spacing:2px;">UTC <span class="blink" style="color:var(--accent);">✦</span></div>
+      <div style="font-size:11px;color:#5a006a;letter-spacing:2px;">UTC <span class="blink" style="color:#cc44ff;">✦</span></div>
     </div>
   </div>
 
-  <!-- MODE SWITCHER -->
-  <div class="mode-bar">
-    <span class="mode-label">CHART MODE:</span>
-    <button class="mode-btn active" id="btn-trad" onclick="setMode('traditional')">TRADITIONAL</button>
-    <button class="mode-btn" id="btn-mod" onclick="setMode('modern')">MODERN ✦</button>
-    <div class="mode-sep"></div>
-    <label class="aspect-toggle"><input type="checkbox" class="toggle-cb" id="minorAsp" onchange="rebuildAll()"> MINOR ASPECTS</label>
-    <label class="aspect-toggle" style="margin-left:8px;"><input type="checkbox" class="toggle-cb" id="showRetro" onchange="rebuildAll()"> RETROGRADE</label>
-    <div class="mode-badge" id="modeBadge">TROPICAL · PLACIDUS</div>
-  </div>
-
-  <!-- BODY -->
   <div class="body-wrap">
-    <div class="wheel-col" style="position:relative;">
-      <canvas id="wheel" width="380" height="380" style="display:block;cursor:crosshair;"></canvas>
+    <div class="wheel-col">
+      <canvas id="wheel" width="370" height="370" style="display:block;"></canvas>
     </div>
 
     <div class="side-col">
 
-      <div class="pnl" id="pnl-planets">
-        <span class="plbl" id="plbl-planets">PLANETARY POSITIONS</span>
-        <div class="table-scroll">
-          <table class="planet-table" id="ptable"></table>
-        </div>
+      <div class="pnl">
+        <span class="plbl">PLANETARY POSITIONS</span>
+        <table class="planet-table" id="ptable"></table>
       </div>
 
       <div class="pnl">
-        <span class="plbl">ASPECTS</span>
-        <div class="asp-scroll" id="aspects"></div>
+        <span class="plbl">MAJOR ASPECTS</span>
+        <div id="aspects"></div>
       </div>
 
       <div class="pnl">
@@ -194,10 +82,10 @@ html,body{background:var(--bg);min-height:100vh;font-family:'VT323',monospace;}
       </div>
 
       <div class="pnl" style="flex:1;">
-        <span class="plbl">ORACLE</span>
-        <div class="info-box">
-          <div class="info-title" id="rtitle">Select a body or aspect…</div>
-          <div id="rbody" style="color:var(--text2);">The veil thins at midnight. Click any celestial body or aspect line to receive its transmission from the beyond.</div>
+        <span class="plbl">READING</span>
+        <div class="info-box" id="reading">
+          <div class="info-title" id="rtitle">Click a planet or aspect...</div>
+          <div id="rbody" style="color:#884499;">Hover the wheel to divine the celestial configuration. The veil is thin tonight.</div>
         </div>
       </div>
 
@@ -205,186 +93,249 @@ html,body{background:var(--bg);min-height:100vh;font-family:'VT323',monospace;}
   </div>
 
   <div class="ftr">
-    <span id="ftr-left">TROPICAL ZODIAC · PLACIDUS HOUSES · HALLOWEEN CHART</span>
-    <span style="font-family:'Cinzel',serif;color:#660077;" id="ftr-glyphs">☽ ☿ ♀ ☉ ♂ ♃ ♄ ⛢ ♆ ♇ ⚷ ⚸ ⚳</span>
-    <span class="blink" style="color:var(--accent);">█</span>
+    <span>TROPICAL ZODIAC · GEOCENTRIC · TRANSIT CHART</span>
+    <span style="font-family:'Cinzel',serif;color:#660077;">☽ ☿ ♀ ☉ ♂ ♃ ♄ ⛢ ♆ ♇</span>
+    <span class="blink" style="color:#cc44ff;">█</span>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/astronomy-engine@2.1.19/astronomy.browser.min.js"></script>
 <script>
-var PI2=Math.PI*2, PI=Math.PI;
-function r(a,b){return a+Math.random()*(b-a);}
+var PI2=Math.PI*2,PI=Math.PI;
 function pad(n){return String(n).padStart(2,'0');}
 
-// ── ZODIAC DATA ──────────────────────────────────────────────────
 var signs=['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
 var signNames=['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
 var signColors=['#ff4422','#66aa22','#ffcc00','#4488ff','#ffaa00','#88cc44','#ff88cc','#cc0044','#ff6600','#338844','#00aaff','#6644ff'];
 var signElem=['fire','earth','air','water','fire','earth','air','water','fire','earth','air','water'];
 var elemColors={fire:'#ff4400',earth:'#88aa22',air:'#44aaff',water:'#4444ff'};
 
-// ── TRADITIONAL PLANETS ──────────────────────────────────────────
-var traditionalPlanets=[
-  {n:'Sun',     g:'☉', deg:217.4, house:8,  col:'#ffcc00', retro:false, cat:'traditional'},
-  {n:'Moon',    g:'☽', deg:48.2,  house:2,  col:'#ddeeff', retro:false, cat:'traditional'},
-  {n:'Mercury', g:'☿', deg:205.1, house:7,  col:'#aaaacc', retro:true,  cat:'traditional'},
-  {n:'Venus',   g:'♀', deg:188.7, house:7,  col:'#ff88cc', retro:false, cat:'traditional'},
-  {n:'Mars',    g:'♂', deg:134.5, house:5,  col:'#ff3333', retro:false, cat:'traditional'},
-  {n:'Jupiter', g:'♃', deg:75.3,  house:3,  col:'#ff9944', retro:false, cat:'traditional'},
-  {n:'Saturn',  g:'♄', deg:352.8, house:1,  col:'#aabb66', retro:true,  cat:'traditional'},
-  {n:'Uranus',  g:'⛢', deg:25.6,  house:1,  col:'#44ffee', retro:false, cat:'traditional'},
-  {n:'Neptune', g:'♆', deg:359.1, house:1,  col:'#4466ff', retro:false, cat:'traditional'},
-  {n:'Pluto',   g:'♇', deg:298.4, house:11, col:'#cc44ff', retro:true,  cat:'traditional'},
+// ── Body registry ──────────────────────────────────────────────────────────
+// Every body this chart can display. The active set is filtered from this by
+// the Classic/Modern toggle.
+//   kind: 'planet'  → looked up via astronomy-engine
+//         'chiron'  → Keplerian propagation from recent osculating elements
+//         'node'    → analytic formula for the Moon's mean node
+var ALL_BODIES=[
+  {n:'Sun',        g:'☉', col:'#ffcc00', kind:'planet', tier:'classic'},
+  {n:'Moon',       g:'☽', col:'#ddeeff', kind:'planet', tier:'classic'},
+  {n:'Mercury',    g:'☿', col:'#aaaacc', kind:'planet', tier:'classic'},
+  {n:'Venus',      g:'♀', col:'#ff88cc', kind:'planet', tier:'classic'},
+  {n:'Mars',       g:'♂', col:'#ff3333', kind:'planet', tier:'classic'},
+  {n:'Jupiter',    g:'♃', col:'#ff9944', kind:'planet', tier:'classic'},
+  {n:'Saturn',     g:'♄', col:'#aabb66', kind:'planet', tier:'classic'},
+  {n:'Uranus',     g:'⛢', col:'#44ffee', kind:'planet', tier:'classic'},
+  {n:'Neptune',    g:'♆', col:'#4466ff', kind:'planet', tier:'classic'},
+  // Modern-only additions (Pluto was demoted in 2006, and Chiron / the Nodes
+  // are modern astrological points):
+  {n:'Pluto',      g:'♇', col:'#cc44ff', kind:'planet', tier:'modern'},
+  {n:'Chiron',     g:'⚷', col:'#dd88ff', kind:'chiron', tier:'modern'},
+  {n:'North Node', g:'☊', col:'#88ccff', kind:'node',   tier:'modern', nodeSide:'N'},
+  {n:'South Node', g:'☋', col:'#cc88ff', kind:'node',   tier:'modern', nodeSide:'S'},
 ];
 
-// ── MODERN / EXTENDED BODIES ─────────────────────────────────────
-var modernExtras=[
-  {n:'Chiron',   g:'⚷', deg:17.2,  house:1,  col:'#ff6688', retro:false, cat:'centaur',
-   desc:'The Wounded Healer. Where Chiron sits reveals your core wound — and the gift you carry because of it. In Aries, the wound is identity itself.'},
-  {n:'Lilith',   g:'⚸', deg:163.8, house:6,  col:'#cc0066', retro:false, cat:'point',
-   desc:'Black Moon Lilith — the dark feminine, the shadow desire, the exiled self. In Virgo she rages against perfectionism and the body\'s own betrayal.'},
-  {n:'Ceres',    g:'⚳', deg:282.5, house:10, col:'#88dd44', retro:false, cat:'dwarf',
-   desc:'Ceres, goddess of grain and grief. Where she falls shows how you nourish and need to be nourished. In Capricorn, love is labor and legacy.'},
-  {n:'Eris',     g:'⊕', deg:228.1, house:8,  col:'#ff2255', retro:true,  cat:'dwarf',
-   desc:'Eris, goddess of discord. Her slow orbit means she speaks to generational upheaval. In Scorpio she is the shadow of power — exposing what was hidden.'},
-  {n:'Pallas',   g:'⚴', deg:97.3,  house:4,  col:'#55aacc', retro:false, cat:'asteroid',
-   desc:'Pallas Athena — pattern recognition, strategic wisdom, the warrior-scholar. In Cancer she defends the homeland through intuition and memory.'},
-  {n:'Juno',     g:'⚵', deg:311.4, house:11, col:'#ffaa33', retro:false, cat:'asteroid',
-   desc:'Juno governs partnership contracts and the shadow side of commitment. In Aquarius she demands freedom within union — or breaks the vow entirely.'},
-  {n:'Vesta',    g:'⚶', deg:44.7,  house:2,  col:'#ff7744', retro:false, cat:'asteroid',
-   desc:'Vesta tends the sacred flame — devotion, focus, what you sacrifice the self for. In Taurus that flame burns through the body: ritual, craft, earth.'},
-  {n:'N.Node',   g:'☊', deg:72.1,  house:3,  col:'#aadd88', retro:false, cat:'point',
-   desc:'The North Node charts your soul\'s evolutionary direction — the unfamiliar territory you are called to inhabit in this lifetime. Face forward.'},
-];
+// Active set — rebuilt when the mode toggle changes.
+var mode='modern';  // 'classic' or 'modern'
+var planets=[];
+function rebuildPlanets(){
+  planets=ALL_BODIES.filter(function(b){
+    return mode==='modern' || b.tier==='classic';
+  }).map(function(b){
+    return {n:b.n,g:b.g,col:b.col,kind:b.kind,nodeSide:b.nodeSide,deg:0,rx:false};
+  });
+}
+rebuildPlanets();
 
-// ── ASPECTS ──────────────────────────────────────────────────────
-var majorAspects=[
-  {name:'Conjunction', sym:'☌', angle:0,   orb:8, col:'#ffcc00', major:true},
-  {name:'Opposition',  sym:'☍', angle:180, orb:8, col:'#ff3333', major:true},
-  {name:'Trine',       sym:'△', angle:120, orb:7, col:'#44ff88', major:true},
-  {name:'Square',      sym:'□', angle:90,  orb:7, col:'#ff6600', major:true},
-  {name:'Sextile',     sym:'⚹', angle:60,  orb:5, col:'#44aaff', major:true},
-  {name:'Quincunx',    sym:'⚻', angle:150, orb:3, col:'#cc44ff', major:true},
-];
-var minorAspects=[
-  {name:'Semisquare',  sym:'∠', angle:45,  orb:2, col:'#ff8844', major:false},
-  {name:'Sesquisquare',sym:'⊾', angle:135, orb:2, col:'#ff6644', major:false},
-  {name:'Quintile',    sym:'Q', angle:72,  orb:2, col:'#88ff44', major:false},
-  {name:'Biquintile',  sym:'bQ',angle:144, orb:2, col:'#44ff66', major:false},
-  {name:'Semisextile', sym:'⚺', angle:30,  orb:2, col:'#66aaff', major:false},
-  {name:'Parallel',    sym:'‖', angle:0,   orb:1, col:'#ffee44', major:false},
-];
+// ── Ephemeris ──────────────────────────────────────────────────────────────
 
-// ── STATE ─────────────────────────────────────────────────────────
-var currentMode='traditional';
-var ascendant=15;
-var animDrift=0;
-
-function getActivePlanets(){
-  if(currentMode==='traditional') return traditionalPlanets.slice();
-  return traditionalPlanets.concat(modernExtras);
+// Meeus: Moon's mean ascending node longitude (degrees, equinox of date).
+function meanNodeLongitude(date){
+  var JD=date.getTime()/86400000+2440587.5;
+  var T=(JD-2451545.0)/36525.0;
+  var o=125.04452 - 1934.136261*T + 0.0020708*T*T + T*T*T/450000;
+  return ((o%360)+360)%360;
 }
 
-function getActiveAspectDefs(){
-  var showMinor=document.getElementById('minorAsp').checked;
-  return showMinor ? majorAspects.concat(minorAspects) : majorAspects;
-}
-
-function computeAspects(planets){
-  var defs=getActiveAspectDefs();
-  var out=[];
-  for(var i=0;i<planets.length;i++){
-    for(var j=i+1;j<planets.length;j++){
-      var diff=angleDiff(planets[i].deg,planets[j].deg);
-      for(var k=0;k<defs.length;k++){
-        var orb=Math.abs(diff-defs[k].angle);
-        if(orb<=defs[k].orb){
-          out.push({p1:i,p2:j,def:defs[k],orb:orb.toFixed(1)});
-        }
-      }
-    }
+// Chiron: Keplerian propagation from a recent osculating epoch (JPL SBDB via
+// Space Reference, epoch JD 2460200.5 = 2023-09-13 TDB). Accurate to ≲ 0.1°
+// for a few years either side of the epoch — orders of magnitude better than
+// propagating from J2000 because Chiron's orbit is perturbed by Saturn.
+var CHIRON_ELEM={
+  epoch:2460200.5, a:13.71, e:0.3764, i:6.92,
+  Omega:209.31, omega:339.36, M0:196.94,
+  period_days:50.65*365.25
+};
+function solveKepler(M_deg,e){
+  var M=M_deg*Math.PI/180, E=M, d=1;
+  for(var k=0;k<50 && Math.abs(d)>1e-10;k++){
+    d=(E-e*Math.sin(E)-M)/(1-e*Math.cos(E));
+    E-=d;
   }
-  return out;
+  return E;
+}
+function chironGeocentricLongitude(date){
+  var JD=date.getTime()/86400000+2440587.5;
+  var n=360/CHIRON_ELEM.period_days;
+  var M=((CHIRON_ELEM.M0+n*(JD-CHIRON_ELEM.epoch))%360+360)%360;
+  var E=solveKepler(M,CHIRON_ELEM.e);
+  // Heliocentric perifocal → J2000 ecliptic
+  var xp=CHIRON_ELEM.a*(Math.cos(E)-CHIRON_ELEM.e);
+  var yp=CHIRON_ELEM.a*Math.sqrt(1-CHIRON_ELEM.e*CHIRON_ELEM.e)*Math.sin(E);
+  var wr=CHIRON_ELEM.omega*PI/180, Or=CHIRON_ELEM.Omega*PI/180, ir=CHIRON_ELEM.i*PI/180;
+  var cw=Math.cos(wr),sw=Math.sin(wr),cO=Math.cos(Or),sO=Math.sin(Or),ci=Math.cos(ir),si=Math.sin(ir);
+  var hx=(cO*cw-sO*sw*ci)*xp + (-cO*sw-sO*cw*ci)*yp;
+  var hy=(sO*cw+cO*sw*ci)*xp + (-sO*sw+cO*cw*ci)*yp;
+  // Earth's position (equatorial J2000) → rotate to ecliptic J2000
+  var eh=Astronomy.HelioVector('Earth',date);
+  var eps=23.43928*PI/180, ce=Math.cos(eps), se=Math.sin(eps);
+  var ex=eh.x, ey=eh.y*ce+eh.z*se;
+  var gx=hx-ex, gy=hy-ey;
+  var lon=Math.atan2(gy,gx)*180/PI;
+  return ((lon%360)+360)%360;
 }
 
-function angleDiff(a,b){var d=Math.abs(a-b)%360;return d>180?360-d:d;}
+// Geocentric apparent ecliptic longitude (true ecliptic of date, ECT) —
+// this is the tropical zodiac frame astrologers use.
+function geoEclipticLongitude(body, date){
+  if(body.kind==='node'){
+    var n=meanNodeLongitude(date);
+    return body.nodeSide==='S' ? (n+180)%360 : n;
+  }
+  if(body.kind==='chiron'){
+    return chironGeocentricLongitude(date);
+  }
+  if(body.n==='Moon'){
+    return Astronomy.EclipticGeoMoon(date).lon;
+  }
+  var vec=Astronomy.GeoVector(body.n,date,true);
+  var ecl=Astronomy.Ecliptic(vec);
+  return (ecl.elon+360)%360;
+}
 
-// ── CANVAS SETUP ──────────────────────────────────────────────────
-var cv=document.getElementById('wheel');
-var ctx=cv.getContext('2d');
-var CX=190, CY=190;
-var R_OUT=182, R_ZODIAC=152, R_HOUSE=118, R_INNER=88, R_PLANET=105, R_EXTRA=130;
+function computeAllPositions(date){
+  // Sun and Moon never retrograde in astronomy. Lunar nodes move backward
+  // by convention (mean node only moves westward) — flagged as always-℞.
+  var RETRO_CAPABLE={Mercury:1,Venus:1,Mars:1,Jupiter:1,Saturn:1,Uranus:1,Neptune:1,Pluto:1,Chiron:1};
+  var dateNext=new Date(date.getTime()+86400000);
+  planets.forEach(function(p){
+    p.deg=geoEclipticLongitude(p,date);
+    if(p.kind==='node'){
+      p.rx=true;  // mean node is retrograde by construction
+    } else if(RETRO_CAPABLE[p.n]){
+      var lonNext=geoEclipticLongitude(p,dateNext);
+      var delta=lonNext-p.deg;
+      if(delta>180) delta-=360;
+      if(delta<-180) delta+=360;
+      p.rx=delta<0;
+    }
+  });
+}
 
-function toRad(deg){return (deg-ascendant)*PI/180;}
+// Ascendant kept at 0° Aries for wheel orientation only — no birth time/location
+// was given, so houses are not computed and no real ASC is derived.
+var ascendant=0;
 
 function getSignIdx(deg){return Math.floor(deg/30)%12;}
 function getSignDeg(deg){return (deg%30).toFixed(1);}
 function getSignName(deg){return signNames[getSignIdx(deg)];}
 
-// ── DRAW WHEEL ────────────────────────────────────────────────────
+var aspectDefs=[
+  {name:'Conjunction', sym:'☌', angle:0,   orb:8, col:'#ffcc00'},
+  {name:'Opposition',  sym:'☍', angle:180, orb:8, col:'#ff3333'},
+  {name:'Trine',       sym:'△', angle:120, orb:7, col:'#44ff88'},
+  {name:'Square',      sym:'□', angle:90,  orb:7, col:'#ff6600'},
+  {name:'Sextile',     sym:'⚹', angle:60,  orb:5, col:'#44aaff'},
+  {name:'Quincunx',    sym:'⚻', angle:150, orb:3, col:'#cc44ff'},
+];
+
+function angleDiff(a,b){var d=Math.abs(a-b)%360;return d>180?360-d:d;}
+
+var aspects=[];
+function computeAspects(){
+  aspects=[];
+  for(var i=0;i<planets.length;i++){
+    for(var j=i+1;j<planets.length;j++){
+      var diff=angleDiff(planets[i].deg,planets[j].deg);
+      for(var k=0;k<aspectDefs.length;k++){
+        var orb=Math.abs(diff-aspectDefs[k].angle);
+        if(orb<=aspectDefs[k].orb){
+          aspects.push({p1:i,p2:j,def:aspectDefs[k],orb:orb.toFixed(1)});
+        }
+      }
+    }
+  }
+}
+
+// Compute per-planet radial offsets so tightly clustered planets (within ~4°)
+// don't render on top of each other. For each planet, scan already-placed
+// neighbours within 4° and pick the first lane that's not taken. Lanes are
+// {0, +14, -14, +28, -28} — five lanes handles even the densest stelliums.
+function computeOffsets(){
+  var order=planets.map(function(p,i){return {p:p,i:i};}).sort(function(a,b){return a.p.deg-b.p.deg;});
+  var offs=new Array(planets.length).fill(0);
+  var LANES=[0,14,-14,28,-28];
+  for(var oi=0;oi<order.length;oi++){
+    var used={};
+    // Look back at prior neighbours whose angular gap to this planet is < 4°.
+    for(var pj=oi-1;pj>=0;pj--){
+      if(order[oi].p.deg-order[pj].p.deg>=4) break;
+      used[offs[order[pj].i]]=1;
+    }
+    for(var li=0;li<LANES.length;li++){
+      if(!used[LANES[li]]){ offs[order[oi].i]=LANES[li]; break; }
+    }
+  }
+  return offs;
+}
+var planetOffsets=[];
+
+var cv=document.getElementById('wheel');
+var ctx=cv.getContext('2d');
+var CX=185,CY=185;
+var R_OUT=175, R_ZODIAC=145, R_HOUSE=115, R_INNER=85, R_PLANET=100;
+
+function toRad(deg){return (deg-ascendant)*PI/180;}
+
 function drawWheel(){
-  var planets=getActivePlanets();
-  var aspects=computeAspects(planets);
+  ctx.clearRect(0,0,370,370);
 
-  ctx.clearRect(0,0,380,380);
-
-  // Outer disc
   ctx.beginPath();ctx.arc(CX,CY,R_OUT,0,PI2);
   ctx.fillStyle='#0a000f';ctx.fill();
   ctx.strokeStyle='#4a0066';ctx.lineWidth=1.5;ctx.stroke();
 
-  // Zodiac ring separator
   ctx.beginPath();ctx.arc(CX,CY,R_ZODIAC,0,PI2);
   ctx.strokeStyle='#330044';ctx.lineWidth=1;ctx.stroke();
 
-  // Zodiac signs
   for(var i=0;i<12;i++){
     var a1=toRad(i*30)*-1+PI/2;
     var a2=toRad((i+1)*30)*-1+PI/2;
     var amid=(a1+a2)/2;
-
-    // segment fill
-    ctx.beginPath();
-    ctx.moveTo(CX,CY);
-    ctx.arc(CX,CY,R_OUT,Math.min(a1,a2),Math.max(a1,a2));
-    ctx.closePath();
-    ctx.fillStyle=signColors[i]+'09';ctx.fill();
-
-    // divider lines
     ctx.beginPath();
     ctx.moveTo(CX+Math.cos(a1)*R_ZODIAC,CY+Math.sin(a1)*R_ZODIAC);
     ctx.lineTo(CX+Math.cos(a1)*R_OUT,CY+Math.sin(a1)*R_OUT);
     ctx.strokeStyle='#3a0055';ctx.lineWidth=0.7;ctx.stroke();
 
-    // Sign glyph
     var signR=(R_ZODIAC+R_OUT)/2;
-    ctx.font='17px serif';
+    ctx.font='16px serif';
     ctx.fillStyle=signColors[i];
     ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillText(signs[i], CX+Math.cos(amid)*signR, CY+Math.sin(amid)*signR);
 
-    // Degree marker
-    ctx.font='8px VT323,monospace';
+    var degR=R_ZODIAC-8;
+    ctx.font='9px VT323,monospace';
     ctx.fillStyle='#4a0066';
-    var degR=R_ZODIAC-7;
     ctx.fillText((i*30)+'°', CX+Math.cos(a1)*degR, CY+Math.sin(a1)*degR);
   }
 
-  // House ring
   ctx.beginPath();ctx.arc(CX,CY,R_HOUSE,0,PI2);
   ctx.strokeStyle='#2a0040';ctx.lineWidth=0.8;ctx.stroke();
-  ctx.beginPath();ctx.arc(CX,CY,R_INNER,0,PI2);
-  ctx.strokeStyle='#330044';ctx.lineWidth=1;ctx.stroke();
 
-  // House divisions
   for(var h=0;h<12;h++){
     var ha=toRad(h*30)*-1+PI/2;
-    var isAngular=(h===0||h===3||h===6||h===9);
     ctx.beginPath();
     ctx.moveTo(CX+Math.cos(ha)*R_INNER,CY+Math.sin(ha)*R_INNER);
     ctx.lineTo(CX+Math.cos(ha)*R_HOUSE,CY+Math.sin(ha)*R_HOUSE);
-    ctx.strokeStyle=isAngular?'#440066':'#220033';
-    ctx.lineWidth=isAngular?1:0.6;ctx.stroke();
+    ctx.strokeStyle='#220033';ctx.lineWidth=0.6;ctx.stroke();
 
     var hR=(R_INNER+R_HOUSE)/2;
     var ha2=toRad(h*30+15)*-1+PI/2;
@@ -394,9 +345,10 @@ function drawWheel(){
     ctx.fillText(toRoman(h+1), CX+Math.cos(ha2)*hR, CY+Math.sin(ha2)*hR);
   }
 
-  // Aspect lines (inside inner circle)
+  ctx.beginPath();ctx.arc(CX,CY,R_INNER,0,PI2);
+  ctx.strokeStyle='#330044';ctx.lineWidth=1;ctx.stroke();
+
   aspects.forEach(function(asp){
-    if(!asp.def.major && !document.getElementById('minorAsp').checked) return;
     var a1=toRad(planets[asp.p1].deg)*-1+PI/2;
     var a2=toRad(planets[asp.p2].deg)*-1+PI/2;
     var x1=CX+Math.cos(a1)*R_INNER;
@@ -404,120 +356,73 @@ function drawWheel(){
     var x2=CX+Math.cos(a2)*R_INNER;
     var y2=CY+Math.sin(a2)*R_INNER;
     ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);
-    var alpha=asp.def.major?'55':'33';
-    ctx.strokeStyle=asp.def.col+alpha;
-    ctx.lineWidth=asp.def.major?0.8:0.4;ctx.stroke();
+    ctx.strokeStyle=asp.def.col+'55';ctx.lineWidth=0.7;ctx.stroke();
   });
 
-  // Planet dots & glyphs
   planets.forEach(function(p,i){
     var a=toRad(p.deg)*-1+PI/2;
-    var pr=R_PLANET;
-    // Modern mode: extra bodies drawn on outer ring
-    if(currentMode==='modern' && p.cat && p.cat!=='traditional'){
-      pr=R_EXTRA;
-    }
+    var pr=R_PLANET+planetOffsets[i];
     var x=CX+Math.cos(a)*pr;
     var y=CY+Math.sin(a)*pr;
 
-    // Planet circle
-    var dotR=p.cat==='point'?5:8;
-    ctx.beginPath();ctx.arc(x,y,dotR,0,PI2);
+    ctx.beginPath();ctx.arc(x,y,10,0,PI2);
     ctx.fillStyle='#0a000f';ctx.fill();
-    ctx.strokeStyle=p.col;
-    ctx.lineWidth=p.cat==='traditional'?1.2:0.9;ctx.stroke();
+    ctx.strokeStyle=p.col;ctx.lineWidth=1;ctx.stroke();
 
-    // Glyph
-    var fsize=p.cat==='traditional'?13:11;
-    ctx.font=fsize+'px serif';
+    ctx.font='13px serif';
     ctx.fillStyle=p.col;
     ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillText(p.g,x,y);
 
-    // Retrograde marker
-    var showRetro=document.getElementById('showRetro').checked;
-    if(showRetro && p.retro){
-      ctx.font='8px VT323,monospace';
-      ctx.fillStyle='#ff3366';
-      ctx.fillText('℞',x+9,y-9);
+    if(p.rx){
+      ctx.font='8px serif';
+      ctx.fillStyle='#ff6688';
+      ctx.fillText('℞',x+8,y+6);
     }
 
-    // Spoke line to inner circle
     ctx.beginPath();
     ctx.moveTo(CX+Math.cos(a)*(R_HOUSE+2),CY+Math.sin(a)*(R_HOUSE+2));
-    ctx.lineTo(CX+Math.cos(a)*(pr-dotR-1),CY+Math.sin(a)*(pr-dotR-1));
-    ctx.strokeStyle=p.col+'33';ctx.lineWidth=0.5;ctx.stroke();
+    ctx.lineTo(CX+Math.cos(a)*(pr-11),CY+Math.sin(a)*(pr-11));
+    ctx.strokeStyle=p.col+'44';ctx.lineWidth=0.5;ctx.stroke();
   });
 
-  // Ring for modern extras
-  if(currentMode==='modern'){
-    ctx.beginPath();ctx.arc(CX,CY,R_EXTRA,0,PI2);
-    ctx.strokeStyle='#660088';ctx.lineWidth=0.5;ctx.setLineDash([3,5]);ctx.stroke();
-    ctx.setLineDash([]);
-  }
-
-  // Ascendant line
   var asc_a=toRad(ascendant)*-1+PI/2;
   ctx.beginPath();
   ctx.moveTo(CX+Math.cos(asc_a)*R_HOUSE,CY+Math.sin(asc_a)*R_HOUSE);
   ctx.lineTo(CX+Math.cos(asc_a)*R_OUT,CY+Math.sin(asc_a)*R_OUT);
   ctx.strokeStyle='#ff6600';ctx.lineWidth=2;ctx.stroke();
-  ctx.font='8px VT323,monospace';ctx.fillStyle='#ff6600';
-  ctx.fillText('ASC',CX+Math.cos(asc_a)*(R_OUT+8),CY+Math.sin(asc_a)*(R_OUT+8));
 
-  // MC line (opposite ASC angle + 90)
-  var mc_a=asc_a-PI/2;
-  ctx.beginPath();
-  ctx.moveTo(CX+Math.cos(mc_a)*R_HOUSE,CY+Math.sin(mc_a)*R_HOUSE);
-  ctx.lineTo(CX+Math.cos(mc_a)*(R_OUT-15),CY+Math.sin(mc_a)*(R_OUT-15));
-  ctx.strokeStyle='#44aaff55';ctx.lineWidth=1;ctx.stroke();
-
-  // Center orb
-  ctx.beginPath();ctx.arc(CX,CY,14,0,PI2);
+  ctx.beginPath();ctx.arc(CX,CY,12,0,PI2);
   ctx.fillStyle='#1a0025';ctx.fill();
-  ctx.strokeStyle=currentMode==='modern'?'#9922cc':'#cc44ff';ctx.lineWidth=1;ctx.stroke();
-  ctx.font='11px serif';
-  ctx.fillStyle=currentMode==='modern'?'#9922cc':'#cc44ff';
-  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.strokeStyle='#cc44ff';ctx.lineWidth=1;ctx.stroke();
+  ctx.font='10px Cinzel,serif';
+  ctx.fillStyle='#cc44ff';ctx.textAlign='center';ctx.textBaseline='middle';
   ctx.fillText('☽',CX,CY);
 }
 
 function toRoman(n){var r=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];return r[n-1]||n;}
 
-// ── UI BUILDERS ───────────────────────────────────────────────────
 function buildTable(){
-  var planets=getActivePlanets();
   var t=document.getElementById('ptable');
-  t.innerHTML='<tr><td colspan="5" style="color:#3a0055;font-size:10px;letter-spacing:1px;padding:0 3px 3px;">GLYPH  BODY          SIGN         DEG</td></tr>';
+  t.innerHTML='<tr><td colspan="4" style="color:#3a0055;font-size:11px;letter-spacing:1px;padding:0 4px 4px;">GLYPH  PLANET        SIGN           DEG</td></tr>';
   planets.forEach(function(p){
     var si=getSignIdx(p.deg);
+    var rxMark=p.rx?' <span style="color:#ff6688;font-size:9px;">℞</span>':'';
     var tr=document.createElement('tr');
     tr.style.cursor='pointer';
-    if(p.cat && p.cat!=='traditional') tr.className='new-body';
-    var showRetro=document.getElementById('showRetro').checked;
-    var retroMark=showRetro&&p.retro?'<span class="retro">℞</span>':'';
-    var catTag=p.cat&&p.cat!=='traditional'?'<span class="new-tag">'+p.cat+'</span>':'';
-    tr.innerHTML='<td class="glyph" style="color:'+p.col+'">'+p.g+'</td>'
-      +'<td class="pname">'+p.n+retroMark+catTag+'</td>'
-      +'<td class="psign">'+signs[si]+' '+signNames[si]+'</td>'
-      +'<td class="pdeg">'+getSignDeg(p.deg)+'°</td>';
+    tr.innerHTML='<td class="glyph" style="color:'+p.col+'">'+p.g+'</td><td class="pname">'+p.n+rxMark+'</td><td class="psign">'+signs[si]+' '+signNames[si]+'</td><td class="pdeg">'+getSignDeg(p.deg)+'°</td>';
     tr.addEventListener('click',function(){showReading(p);});
-    tr.addEventListener('mouseenter',function(){showTooltip(event,p.n+' · H'+p.house);});
-    tr.addEventListener('mouseleave',hideTooltip);
     t.appendChild(tr);
   });
 }
 
 function buildAspects(){
-  var planets=getActivePlanets();
-  var aspects=computeAspects(planets);
   var el=document.getElementById('aspects');
   el.innerHTML='';
-  if(aspects.length===0){
-    el.innerHTML='<div style="color:var(--dim);font-size:11px;padding:4px;">No aspects found in current configuration.</div>';
-    return;
-  }
-  aspects.forEach(function(asp){
+  // Sort by tightness of orb so the most exact aspects are shown first.
+  var sorted=aspects.slice().sort(function(a,b){return parseFloat(a.orb)-parseFloat(b.orb);});
+  var limit=mode==='modern'?12:8;
+  sorted.slice(0,limit).forEach(function(asp){
     var d=document.createElement('div');
     d.className='aspect-row';
     d.style.cursor='pointer';
@@ -526,13 +431,12 @@ function buildAspects(){
       +'<span class="aname">'+asp.def.name+'</span>'
       +'<span style="color:'+planets[asp.p2].col+'">'+planets[asp.p2].g+'</span>'
       +'<span class="aorb">'+asp.orb+'°</span>';
-    d.addEventListener('click',function(){showAspectReading(asp,planets);});
+    d.addEventListener('click',function(){showAspectReading(asp);});
     el.appendChild(d);
   });
 }
 
 function buildElem(){
-  var planets=getActivePlanets();
   var el=document.getElementById('elembal');
   var counts={fire:0,earth:0,air:0,water:0};
   planets.forEach(function(p){counts[signElem[getSignIdx(p.deg)]]++;});
@@ -549,9 +453,8 @@ function buildElem(){
     bar.appendChild(b);
   });
   el.appendChild(bar);
-
   var mod=document.createElement('div');
-  mod.style.cssText='display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;';
+  mod.style.cssText='display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;';
   var modes={cardinal:0,fixed:0,mutable:0};
   var modeMap=[0,1,2,0,1,2,0,1,2,0,1,2];
   var mNames=['cardinal','fixed','mutable'];
@@ -564,51 +467,211 @@ function buildElem(){
     mod.appendChild(b);
   });
   el.appendChild(mod);
-
-  // Modern mode: extra polarity/dignity row
-  if(currentMode==='modern'){
-    var extra=document.createElement('div');
-    extra.style.cssText='margin-top:5px;font-size:10px;color:#660088;letter-spacing:1px;';
-    extra.textContent='⊕ INCLUDES ASTEROIDS · CENTAURS · DWARF PLANETS · POINTS';
-    el.appendChild(extra);
-  }
 }
 
-// ── READINGS ──────────────────────────────────────────────────────
+// Sign-keyed interpretations for each planet. Works for any position the
+// ephemeris returns; always in sync with wherever the planet actually is.
 var readings={
-  'Sun':['The Sun in Scorpio burns with occult fire. Will is forged in shadow and depth. The ego dissolves into the abyss only to emerge transfigured.','Power, transformation, and the penetrating gaze into hidden truths. Others sense this solar force — magnetic and slightly terrifying.'],
-  'Moon':['Moon in Taurus seeks comfort in the sensory world — earthbound instincts anchor the emotional tides. There is stubbornness here that borders on sacred.','Deep security needs. The soul yearns for permanence in a world of change. Roots grow downward, invisibly.'],
-  'Mercury':['Mercury in Libra weighs every word on invisible scales. The mind seeks balance and beauty in all communication, sometimes to the point of indecision.','Diplomatic thought, aesthetic reasoning, the ability to see all sides. A diplomat of the psyche.'],
-  'Venus':['Venus in Virgo loves with precision — devotion expressed through service, detail, the perfectly arranged altar. Affection is shown, rarely spoken.','Refinement, critical love, the search for purity in partnership. Earthly beauty found in the understated.'],
-  'Mars':['Mars in Leo roars. Drive, ambition, and ego merge into theatrical will. The warrior performs as much as they fight.','Creative aggression, passionate leadership, the desire to be seen doing bold things.'],
-  'Jupiter':['Jupiter in Gemini expands through curiosity. Wisdom arrives in fragments — gleaned from a thousand conversations, a thousand books left half-read.','Scattered yet prolific. The mind grows larger through breadth rather than depth.'],
-  'Saturn':['Saturn in Aries confronts the self. Discipline applied to identity, ambition constrained by karmic law. The pioneer must earn their ground.','Maturation of the self, the slow forging of genuine courage through repeated trial.'],
-  'Uranus':['Uranus in Aries shocks the collective with radical individuality. A generation that breaks the mold and insists on reinvention.','Revolutionary urgency, the spark that ignites systemic change through individual defiance.'],
-  'Neptune':['Neptune in Aries dissolves the boundaries of the self — spiritual idealism, mystical warfare, the saint and the zealot indistinguishable.','A generation of dreamers who confuse spiritual fire with ego. Transcendence through surrender of identity.'],
-  'Pluto':['Pluto in Sagittarius rewrites belief systems from the roots. Philosophy, religion, and ideology undergo total transformation.','The shadow of dogma exposed. Truth weaponized and then redeemed. Deep restructuring of meaning itself.'],
-  'Chiron':['Chiron in Aries — the deepest wound is the self. The question "who am I?" cuts like broken glass. Yet in teaching others to stand in their own fire, the healer is slowly healed.','The maverick asteroid orbits between Saturn and Uranus, bridging the old and the revolutionary. Its placement reveals a sacred wound that becomes your greatest gift.'],
-  'Lilith':['Black Moon Lilith in Virgo rebels against the demand for purity. She rages when her body is policed, her labor made invisible, her wildness labeled impure. Here she reclaims the sacred mundane.','She is the part of you that was exiled for being too much. In Virgo, reclamation comes through embodied practice, craft, and refusing to shrink.'],
-  'Ceres':['Ceres in Capricorn feeds through achievement, structure, and legacy. Nourishment takes the form of labor that outlasts the laborer. She grieves what was not allowed to grow.','The asteroid goddess of harvest and loss. Where Ceres sits shows your relationship to sustenance — given and denied.'],
-  'Eris':['Eris in Scorpio is generational fury. The apple of discord thrown into power structures that never acknowledged their own rot. She does not create chaos — she reveals it.','Planet of discord and the marginalized feminine. Her decades-long transit through each sign shapes the collective shadow of an era.'],
-  'Pallas':['Pallas in Cancer strategizes through feeling. The warrior-wisdom goddess here defends through intuition and ancestral knowing, not cold logic. Home is the battlefield and the sanctuary.','Pallas Athena as asteroid — strategic intelligence, pattern recognition, creative wisdom. In Cancer she synthesizes memory into strategy.'],
-  'Juno':['Juno in Aquarius refuses conventional partnership contracts. She wants a union of equals, of minds, of shared visions — or nothing. The marriage vow here includes freedom.','The asteroid of committed partnership and its shadow demands. Where Juno falls reveals what you require — and what you risk — in binding yourself to another.'],
-  'Vesta':['Vesta in Taurus tends the body as altar. The sacred flame here burns through sensory devotion — craft, food, earth, the slow ritual of physical care given and received.','The asteroid of sacred focus and devotion. Where Vesta sits shows what your soul returns to — not from duty but from inner necessity.'],
-  'N.Node':['The North Node in Gemini calls you toward curiosity over certainty, plurality over singular truth. The karmic trajectory bends toward conversation, learning, the local over the cosmic.','The Dragon\'s Head — where the soul is aimed. The North Node is unfamiliar territory, uncomfortable and luminous. This lifetime\'s work lives here.'],
+  'Sun':{
+    Aries:'The Sun in Aries burns at its pioneering peak. Identity is action — the will charges forward, insisting on being first, on being new.',
+    Taurus:'The Sun in Taurus steadies the will in the slow fire of the earth. Purpose grows like a seed — patient, stubborn, rooted. Power is measured in endurance.',
+    Gemini:'The Sun in Gemini shines through curiosity. Identity is mercurial, many-voiced — the self constructed through conversation, collection, and wit.',
+    Cancer:'The Sun in Cancer glows from within the shell. Identity is nurtured in private, expressed through care, loyalty, and the long memory of the heart.',
+    Leo:'The Sun in Leo is in its own house — royal, creative, generous. Identity performs itself openly, and the world is a stage that demands to be graced.',
+    Virgo:'The Sun in Virgo refines itself through craft. Identity emerges through precision, service, and the patient perfecting of every small thing.',
+    Libra:'The Sun in Libra finds itself through the other. Identity is negotiated, balanced, aesthetic — selfhood understood only in relation.',
+    Scorpio:'The Sun in Scorpio burns with occult fire. The ego is forged in depth, dissolved in the abyss, and emerges transfigured. Power through penetrating truth.',
+    Sagittarius:'The Sun in Sagittarius aims at the horizon. Identity is forged through the quest — philosophical, far-ranging, always reaching past the known.',
+    Capricorn:'The Sun in Capricorn climbs the long slope. Identity is built structurally, over time, through mastery, responsibility, and earned authority.',
+    Aquarius:'The Sun in Aquarius shines coolly from a great distance. Identity is the outsider, the reformer, the one who sees the system from outside.',
+    Pisces:'The Sun in Pisces dissolves the edges of the self. Identity is oceanic, compassionate, mystical — a soul more at home in dream than in form.'
+  },
+  'Moon':{
+    Aries:'Moon in Aries feels in flashes — impatient, pioneering, burning hot and quick. Emotion fires before reflection catches up.',
+    Taurus:'Moon in Taurus seeks comfort in the sensory world — earthbound instincts anchor the emotional tides. There is stubbornness here that borders on sacred.',
+    Gemini:'Moon in Gemini feels through thinking. The emotions arrive as words, questions, a restless need to name what is happening inside.',
+    Cancer:'Moon in Cancer is at home — tidal, receptive, deeply caretaking. Feelings run as ancestral currents, and memory colours every present moment.',
+    Leo:'Moon in Leo wants to be witnessed. Emotion performs itself — radiant, theatrical, generous. The heart demands a stage on which to burn openly.',
+    Virgo:'Moon in Virgo soothes itself by tending. Feelings are ordered through routine, service, and the quiet satisfaction of small things done right.',
+    Libra:'Moon in Libra settles when harmony is restored. Emotions seek partnership, beauty, balance — discomfort arrives with discord.',
+    Scorpio:'Moon in Scorpio feels in the marrow. Emotions run underground — loyal, possessive, unafraid of shadow. Nothing is felt halfway.',
+    Sagittarius:'Moon in Sagittarius is soothed by horizons. Feelings open outward — toward freedom, meaning, the next adventure that promises more.',
+    Capricorn:'Moon in Capricorn holds itself carefully. Emotions are disciplined, mature before their time, trusting only what has been proven.',
+    Aquarius:'Moon in Aquarius cools its feelings into observation. The heart relates to the collective, to ideas, to friendships more than to one.',
+    Pisces:'Moon in Pisces blurs the boundary between self and other. Emotions flood in from everywhere — compassionate, psychic, sometimes overwhelmed.'
+  },
+  'Mercury':{
+    Aries:'Mercury in Aries speaks before it thinks, and sometimes that is the right order. Thought arrives as spark — direct, argumentative, pioneering.',
+    Taurus:'Mercury in Taurus thinks slowly and keeps what it learns. Ideas take root only once tested against the body and the tangible world.',
+    Gemini:'Mercury in Gemini is in its element — quicksilver, curious, connection-making. Thought as play, language as architecture.',
+    Cancer:'Mercury in Cancer thinks through feeling. Memory and mood shape reason; communication moves through tone more than logic.',
+    Leo:'Mercury in Leo speaks with warmth and theatre. Ideas want an audience; words are performed, generous, and proudly original.',
+    Virgo:'Mercury in Virgo is also at home — analytical, precise, the editor of reality. Thought refines itself through endless useful distinctions.',
+    Libra:'Mercury in Libra weighs every word on invisible scales. The mind seeks balance and beauty in all communication, sometimes to the point of indecision.',
+    Scorpio:'Mercury in Scorpio speaks in code and truth. Thought penetrates — it is not satisfied until it reaches the hidden motive.',
+    Sagittarius:'Mercury in Sagittarius thinks in arcs and horizons. The mind roves philosophically, sometimes outrunning the facts on its way to the vision.',
+    Capricorn:'Mercury in Capricorn thinks structurally. Ideas are built to last — serious, disciplined, pragmatic about what can actually be done.',
+    Aquarius:'Mercury in Aquarius thinks in systems and from altitude. The mind detaches itself from sentiment to see the pattern underneath.',
+    Pisces:'Mercury in Pisces dissolves ordinary logic. Thought arrives as image, intuition, poetic leap — truth caught through metaphor more than proof.'
+  },
+  'Venus':{
+    Aries:'Venus in Aries loves fast and honestly. Attraction is the chase, the spark, the bold declaration — courted by directness, bored by hesitation.',
+    Taurus:'Venus in Taurus is in her own house — sensual, devoted, slow-loving. Affection is shown through touch, through beauty, through staying.',
+    Gemini:'Venus in Gemini loves with curiosity. Attraction follows the play of words and wit — enchanted by the quicksilver shift of attention.',
+    Cancer:'Venus in Cancer loves protectively. Affection is cooked into food, tucked into small gestures, remembered across years.',
+    Leo:'Venus in Leo loves grandly. Romance is performed with generosity and flair — the beloved must be adored openly, and adoration returned.',
+    Virgo:'Venus in Virgo loves with precision — devotion expressed through service, detail, the perfectly arranged altar. Affection is shown, rarely spoken.',
+    Libra:'Venus in Libra is in her own house — relational, aesthetic, diplomatic. Love is a fine art and partnership a discipline of beauty.',
+    Scorpio:'Venus in Scorpio loves to the depths. Attraction is fused with power, loyalty, and a taste for the transformative rather than the safe.',
+    Sagittarius:'Venus in Sagittarius loves the open road. Affection wants adventure, shared meaning, a companion for the journey rather than the hearth.',
+    Capricorn:'Venus in Capricorn loves durably. Romance is tested against time — affection shows itself in commitment, steadiness, and quiet provision.',
+    Aquarius:'Venus in Aquarius loves freely and strangely. Attraction follows the unusual; friendship is the soil in which the rarest romance grows.',
+    Pisces:'Venus in Pisces is exalted — boundless, compassionate, romantic to the point of self-dissolution. Love is a spiritual practice.'
+  },
+  'Mars':{
+    Aries:'Mars in Aries is home — raw, unfiltered, competitive, alive. The warrior recognises the field and moves without hesitation.',
+    Taurus:'Mars in Taurus moves slowly and does not stop. Drive is patient, sensual, and immovable once committed.',
+    Gemini:'Mars in Gemini fights with words and pivots quickly. Action scatters across many fronts — nimble, verbal, perpetually in motion.',
+    Cancer:'Mars in Cancer acts indirectly, protectively. Drive emerges through care and emotion, fiercest when the home or the beloved is threatened.',
+    Leo:'Mars in Leo roars. Drive, ambition, and ego merge into theatrical will. The warrior performs as much as they fight.',
+    Virgo:'Mars in Virgo acts through precision and repetition. Drive is channelled into craft, discipline, the steady grind toward mastery.',
+    Libra:'Mars in Libra fights politely, through diplomacy and strategy. Drive is tempered by fairness, sometimes by hesitation.',
+    Scorpio:'Mars in Scorpio is in its traditional home — ruthless, surgical, unafraid of shadow. Desire moves silently and arrives with total force.',
+    Sagittarius:'Mars in Sagittarius crusades. Drive aims at large targets, fuelled by belief — honest, adventurous, sometimes overreaching.',
+    Capricorn:'Mars in Capricorn is exalted. Drive is strategic, patient, relentless — ambition with a long plan and the discipline to execute it.',
+    Aquarius:'Mars in Aquarius fights for the idea. Drive is impersonal, reformist, devoted to principle rather than personal gain.',
+    Pisces:'Mars in Pisces moves sideways, through currents rather than confrontation. Drive is mystical, compassionate, sometimes diffuse.'
+  },
+  'Jupiter':{
+    Aries:'Jupiter in Aries expands through bold beginnings. Luck favours the brave — growth through daring, initiation, and personal adventure.',
+    Taurus:'Jupiter in Taurus grows slowly and materially. Abundance settles into the body, the senses, the harvest that takes its time.',
+    Gemini:'Jupiter in Gemini expands through curiosity. Wisdom arrives in fragments — gleaned from a thousand conversations, a thousand books left half-read.',
+    Cancer:'Jupiter in Cancer is exalted. Abundance found in care, in feeding, in belonging. The blessing flows through what is sheltered and cherished.',
+    Leo:'Jupiter in Leo expands with generous drama. Growth arrives through creative fire, through being fully oneself in front of the world.',
+    Virgo:'Jupiter in Virgo grows through refinement. Abundance is found in improvement, in service, in the mastery of the useful.',
+    Libra:'Jupiter in Libra expands through relationship. Luck arrives through partnership, beauty, and the generous practice of fairness.',
+    Scorpio:'Jupiter in Scorpio expands through depth. Growth arrives through what is hidden — intimacy, power, the courage to descend.',
+    Sagittarius:'Jupiter in Sagittarius is in its own house — philosophical, adventurous, vision-granting. The teacher and the traveller both thrive.',
+    Capricorn:'Jupiter in Capricorn grows through structure. Luck is earned through discipline and long commitment — sober abundance.',
+    Aquarius:'Jupiter in Aquarius expands through the collective. Growth arrives through ideals, friendships, and the reimagined future.',
+    Pisces:'Jupiter in Pisces is in its traditional home — compassionate, boundless, mystical. Abundance flows through faith and surrender.'
+  },
+  'Saturn':{
+    Aries:'Saturn in Aries is a strange king — discipline applied to pure beginning. The pioneer must learn to build, not only to charge forward.',
+    Taurus:'Saturn in Taurus grounds itself in value. Lessons arrive through money, body, and the slow work of proving what truly endures.',
+    Gemini:'Saturn in Gemini disciplines the mind. Lessons arrive through language, study, the careful weight of what is said.',
+    Cancer:'Saturn in Cancer constrains feeling. Lessons arrive through family, home, and the maturation of emotional responsibility.',
+    Leo:'Saturn in Leo tempers ego. The lesson is authentic authority — to shine without needing applause.',
+    Virgo:'Saturn in Virgo perfects the craft. Lessons arrive through labour, detail, and the demanding standards that make mastery possible.',
+    Libra:'Saturn in Libra is exalted — the architect of justice. Lessons arrive through partnership and the hard work of sustained fairness.',
+    Scorpio:'Saturn in Scorpio demands deep honesty. Lessons arrive through power, intimacy, and the willingness to face what cannot be avoided.',
+    Sagittarius:'Saturn in Sagittarius disciplines belief. Lessons arrive through testing what was merely hoped for against what can actually be lived.',
+    Capricorn:'Saturn in Capricorn is in its own house — structural, strategic, authoritative. Mastery comes through patient construction.',
+    Aquarius:'Saturn in Aquarius builds the future slowly. Lessons arrive through community, innovation, and the discipline of reform.',
+    Pisces:'Saturn in Pisces structures the ineffable. Lessons arrive through faith, art, and the slow work of grounding the spiritual.'
+  },
+  'Uranus':{
+    Aries:'Uranus in Aries shocks the collective with radical individuality. A generation that breaks the mould and insists on reinvention of the self.',
+    Taurus:'Uranus in Taurus revolutionises value — money, land, body, resources. What was considered solid is destabilised and rebuilt.',
+    Gemini:'Uranus in Gemini disrupts communication and thought. A generation that rewires how information moves and what language can carry.',
+    Cancer:'Uranus in Cancer upheaves the home, the family, the nation. The old containers of belonging are broken to make way for new ones.',
+    Leo:'Uranus in Leo revolutionises self-expression and creativity. Celebrity, performance, and the nature of individual brilliance are rewritten.',
+    Virgo:'Uranus in Virgo disrupts work, health, and the ordinary. New systems, new medicines, new ways of structuring daily life.',
+    Libra:'Uranus in Libra breaks open partnership and law. Marriage, justice, and the terms of relating are revolutionised.',
+    Scorpio:'Uranus in Scorpio detonates what is hidden. Power structures, sexuality, and the underworld of the psyche are forcibly exposed.',
+    Sagittarius:'Uranus in Sagittarius disrupts belief itself. Religion, philosophy, higher education — all the systems of meaning are electrified.',
+    Capricorn:'Uranus in Capricorn overthrows structures. Governments, corporations, and inherited authority are cracked and rebuilt.',
+    Aquarius:'Uranus in Aquarius is in its own house — the great awakening of the collective, technology and ideology braided together.',
+    Pisces:'Uranus in Pisces electrifies the mystical. A generation where spirituality, psyche, and image are revolutionised together.'
+  },
+  'Neptune':{
+    Aries:'Neptune in Aries dissolves the boundaries of the self through spiritual fire. The dream wants to be lived — mystic and zealot share the same flame.',
+    Taurus:'Neptune in Taurus blurs material value. A generation that spiritualises the earth, the body, money — or loses itself in the sensual fog.',
+    Gemini:'Neptune in Gemini enchants language. A generation for whom words, media, and information become both revelation and illusion.',
+    Cancer:'Neptune in Cancer romanticises home and origin. The family becomes myth — healed, idealised, or dissolved altogether.',
+    Leo:'Neptune in Leo glamours the self. A generation drawn to celebrity, performance, and the beautiful dream of shining.',
+    Virgo:'Neptune in Virgo mists the ordinary. Work, health, and routine take on spiritual significance — or slide into confusion.',
+    Libra:'Neptune in Libra idealises love. A generation dreaming of perfect union, vulnerable to the disillusionment that follows.',
+    Scorpio:'Neptune in Scorpio deepens the mystical underworld. Sex, death, and power are experienced as thresholds to the unseen.',
+    Sagittarius:'Neptune in Sagittarius idealises the quest. Philosophy and religion turn visionary, expansive, sometimes unmoored.',
+    Capricorn:'Neptune in Capricorn dissolves structures. Authority loses its solidity; a generation questions the foundations they inherited.',
+    Aquarius:'Neptune in Aquarius dreams the collective future. Utopian imagination meets the risk of technological mirage.',
+    Pisces:'Neptune in Pisces is in its own house — oceanic, compassionate, visionary. The ordinary world thins to reveal the spiritual beneath.'
+  },
+  'Pluto':{
+    Aries:'Pluto in Aries transforms identity at the root. The very nature of individual will is rewritten, violently and permanently.',
+    Taurus:'Pluto in Taurus transforms value. Money, land, body, resources — the ground of material life is reshaped through crisis.',
+    Gemini:'Pluto in Gemini transforms thought and speech. Language becomes a theatre of power; information itself is weaponised and reborn.',
+    Cancer:'Pluto in Cancer transforms home and nation. The foundations of belonging are broken open and remade.',
+    Leo:'Pluto in Leo transforms ego and sovereignty. The nature of personal power, leadership, and creative fire is rewritten.',
+    Virgo:'Pluto in Virgo transforms work, health, and the body. Systems of service and labour are torn down and remade.',
+    Libra:'Pluto in Libra transforms partnership and justice. The terms of union and fairness undergo deep restructuring.',
+    Scorpio:'Pluto in Scorpio is in its own house — surgical, merciless, regenerative. A generation marked by transformation through the hidden.',
+    Sagittarius:'Pluto in Sagittarius rewrites belief systems from the roots. Philosophy, religion, and ideology undergo total transformation.',
+    Capricorn:'Pluto in Capricorn dismantles structure. Governments, corporations, and the old architecture of authority are composted and reborn.',
+    Aquarius:'Pluto in Aquarius rewrites the architecture of the collective. Systems, networks, technologies, and ideologies undergo slow tectonic transformation.',
+    Pisces:'Pluto in Pisces transforms the spiritual itself. The collective unconscious is churned, dissolved, and reborn in new mythic form.'
+  },
+  'Chiron':{
+    Aries:'Chiron in Aries holds the wound of the self — identity, courage, the right to exist as you are. Healing comes through the brave act of taking up space.',
+    Taurus:'Chiron in Taurus holds the wound of worth — body, resources, what can be owned or trusted. Healing comes through reclaiming the senses and the tangible.',
+    Gemini:'Chiron in Gemini holds the wound of voice — words unsaid, stories unheard, minds not met. Healing comes through the courage to speak and be understood.',
+    Cancer:'Chiron in Cancer holds the wound of home — belonging, the mother, the roots one was given or denied. Healing comes through chosen family and self-nurture.',
+    Leo:'Chiron in Leo holds the wound of the heart — being seen, being celebrated, daring to shine. Healing comes through creative courage and self-love without apology.',
+    Virgo:'Chiron in Virgo holds the wound of imperfection — the body, the service offered, never feeling enough. Healing comes through befriending the messy and the small.',
+    Libra:'Chiron in Libra holds the wound of relationship — the fear of being alone, the pattern of losing oneself in the other. Healing comes through balanced mutuality.',
+    Scorpio:'Chiron in Scorpio holds the wound of trust — intimacy, power, the things that were taken or withheld. Healing comes through depth, honesty, alchemical transformation.',
+    Sagittarius:'Chiron in Sagittarius holds the wound of meaning — faith, direction, the loss of the larger story. Healing comes through a quest undertaken in one\u2019s own terms.',
+    Capricorn:'Chiron in Capricorn holds the wound of authority — fathers, structures, the weight of what must be achieved. Healing comes through earning one\u2019s own legitimacy.',
+    Aquarius:'Chiron in Aquarius holds the wound of belonging to the whole — otherness, alienation, the outsider. Healing comes through community chosen, not inherited.',
+    Pisces:'Chiron in Pisces holds the wound of the soul — boundary, dissolution, the ache of not being able to save everyone. Healing comes through compassion, including for the self.'
+  },
+  'North Node':{
+    Aries:'The North Node in Aries points toward the courage of the self — leaving the comfort of the other, learning to act on one\u2019s own behalf, initiating without apology.',
+    Taurus:'The North Node in Taurus points toward embodiment and simplicity — leaving the chaos of crisis, learning to rest, to value, to build slowly on solid ground.',
+    Gemini:'The North Node in Gemini points toward curiosity and conversation — leaving the lonely certainty of the seeker, learning to ask, to listen, to multiply viewpoints.',
+    Cancer:'The North Node in Cancer points toward emotional home — leaving the demand of public achievement, learning to feel, to belong, to be tender without shame.',
+    Leo:'The North Node in Leo points toward the courage to shine — leaving the safety of the crowd, learning to claim one\u2019s own warmth, to be seen as oneself.',
+    Virgo:'The North Node in Virgo points toward craft and service — leaving the dreamy escape, learning the dignity of doing one thing well and caring for small details.',
+    Libra:'The North Node in Libra points toward relationship — leaving the fortress of the self, learning the art of partnership, compromise, and graceful mutuality.',
+    Scorpio:'The North Node in Scorpio points toward transformation — leaving the surface and the safe, learning to descend into intimacy, power, and the honest dark.',
+    Sagittarius:'The North Node in Sagittarius points toward meaning — leaving the tangled web of daily detail, learning to seek the larger story and trust one\u2019s own vision.',
+    Capricorn:'The North Node in Capricorn points toward mastery — leaving the familial comfort, learning to build structure, commit, and take on real responsibility.',
+    Aquarius:'The North Node in Aquarius points toward the collective — leaving the stage of the self, learning to serve the group, the vision, the shared future.',
+    Pisces:'The North Node in Pisces points toward surrender — leaving the tyranny of analysis, learning to trust intuition, to soften, to let the mystery be larger than the plan.'
+  },
+  'South Node':{
+    Aries:'The South Node in Aries marks what must be released — the habit of going it alone, the reflex of combat, the identity built on being first.',
+    Taurus:'The South Node in Taurus marks what must be released — the clinging to comfort, the resistance to change, the story that safety comes only from what is owned.',
+    Gemini:'The South Node in Gemini marks what must be released — the endless gathering of information, the scatter of attention, the refuge of cleverness.',
+    Cancer:'The South Node in Cancer marks what must be released — the retreat into the familiar shell, the over-identification with the mother role, emotional dependency as home.',
+    Leo:'The South Node in Leo marks what must be released — the need for the spotlight, the drama, the belief that worth is measured by applause.',
+    Virgo:'The South Node in Virgo marks what must be released — the perfectionist grind, the critical inner voice, the refuge of being useful instead of being.',
+    Libra:'The South Node in Libra marks what must be released — the habit of losing the self in partnership, the fear of displeasing, peace at any cost.',
+    Scorpio:'The South Node in Scorpio marks what must be released — the attachment to crisis and depth, the refusal to trust ease, the identity forged in shadow.',
+    Sagittarius:'The South Node in Sagittarius marks what must be released — the certainty of one\u2019s own worldview, the restless escape, the preaching that drowns out listening.',
+    Capricorn:'The South Node in Capricorn marks what must be released — the cold authority, the rigid structure, the belief that love must be earned through achievement.',
+    Aquarius:'The South Node in Aquarius marks what must be released — the detached observer, the ideological armour, the distance that calls itself freedom.',
+    Pisces:'The South Node in Pisces marks what must be released — the dissolving into mist, the martyr\u2019s stance, the confusion that substitutes for surrender.'
+  }
 };
 
 function showReading(p){
-  document.getElementById('rtitle').textContent=p.g+' '+p.n+' in '+getSignName(p.deg)+(p.retro&&document.getElementById('showRetro').checked?' ℞':'');
+  var signName=getSignName(p.deg);
+  var rxTag=p.rx?' ℞':'';
+  document.getElementById('rtitle').textContent=p.g+' '+p.n+rxTag+' in '+signName;
   document.getElementById('rtitle').style.color=p.col;
-  var rx;
-  if(p.desc){
-    rx=[p.desc];
-  } else {
-    rx=readings[p.n]||['Celestial energies are being calculated...','The stars speak in frequencies beyond current translation.'];
+  var txt=(readings[p.n]&&readings[p.n][signName])||'The celestial glyph speaks in tongues yet to be translated.';
+  // The lunar nodes are always retrograde by construction — the ℞ mark is
+  // just convention, not an inward turn. So only add the reflective note for
+  // true retrograde bodies (planets and Chiron).
+  if(p.rx && p.kind!=='node'){
+    txt+=' Retrograde now — the energy turns inward, reviews itself, asks to be reconsidered before moving forward again.';
   }
-  document.getElementById('rbody').textContent=rx[Math.floor(Math.random()*rx.length)];
+  document.getElementById('rbody').textContent=txt;
 }
 
-function showAspectReading(asp,planets){
+function showAspectReading(asp){
   var p1=planets[asp.p1],p2=planets[asp.p2];
   document.getElementById('rtitle').textContent=p1.g+' '+asp.def.sym+' '+p2.g+' — '+asp.def.name;
   document.getElementById('rtitle').style.color=asp.def.col;
@@ -619,69 +682,95 @@ function showAspectReading(asp,planets){
     'Square':'Friction and growth — '+p1.n+' and '+p2.n+' clash at right angles. Challenges demand creative solutions. Crisis is the engine of evolution.',
     'Sextile':'Opportunity knocks — '+p1.n+' and '+p2.n+' offer cooperative potential. These gifts require activation, but the door is open.',
     'Quincunx':'Uneasy adjustment — '+p1.n+' and '+p2.n+' speak different languages. Constant recalibration, the irritant that makes the pearl.',
-    'Semisquare':'Minor friction — '+p1.n+' and '+p2.n+' grate at 45°. Small irritations that accumulate. The adjustment is internal.',
-    'Sesquisquare':'Agitation — '+p1.n+' and '+p2.n+' at 135° create pressure that demands release. Something must give way.',
-    'Quintile':'Creative talent — '+p1.n+' and '+p2.n+' at 72° form a talent aspect. Gifts that emerge through discipline and devotion.',
-    'Biquintile':'Refined genius — '+p1.n+' and '+p2.n+' at 144° mark specialized mastery. The 5th harmonic refined to its peak.',
-    'Semisextile':'Adjacent tension — '+p1.n+' and '+p2.n+' at 30° are uneasy neighbors. Different in nature but forced to coexist.',
-    'Parallel':'Parallel declination — '+p1.n+' and '+p2.n+' share the same celestial latitude. A hidden conjunction in the sky\'s vertical plane.',
   };
   document.getElementById('rbody').textContent=msgs[asp.def.name]||'Celestial forces in dynamic relationship.';
 }
 
-// ── MODE SWITCHER ─────────────────────────────────────────────────
-function setMode(mode){
-  currentMode=mode;
-  document.getElementById('btn-trad').classList.toggle('active',mode==='traditional');
-  document.getElementById('btn-mod').classList.toggle('active',mode==='modern');
-  document.getElementById('modeBadge').textContent=mode==='modern'?'MODERN · EXTENDED':'TROPICAL · PLACIDUS';
-  var plbl=document.getElementById('plbl-planets');
-  plbl.textContent=mode==='modern'?'BODIES (EXTENDED)':'PLANETARY POSITIONS';
-  document.getElementById('ftr-left').textContent=mode==='modern'
-    ?'TROPICAL · PLACIDUS · +ASTEROIDS · +CENTAURS · +DWARFS'
-    :'TROPICAL ZODIAC · PLACIDUS HOUSES · HALLOWEEN CHART';
-  rebuildAll();
-}
-
-function rebuildAll(){
-  buildTable();
-  buildAspects();
-  buildElem();
-}
-
-// ── TOOLTIP ───────────────────────────────────────────────────────
-function showTooltip(e,txt){
-  var t=document.getElementById('tooltip');
-  t.textContent=txt;t.style.display='block';
-  t.style.left=(e.clientX+12)+'px';t.style.top=(e.clientY-8)+'px';
-}
-function hideTooltip(){document.getElementById('tooltip').style.display='none';}
-
-// ── CLOCK ─────────────────────────────────────────────────────────
 function updateClock(){
   var d=new Date();
   document.getElementById('clk').textContent=pad(d.getUTCHours())+':'+pad(d.getUTCMinutes())+':'+pad(d.getUTCSeconds());
 }
 
-// ── ANIMATION ─────────────────────────────────────────────────────
-function animateWheel(){
-  animDrift+=0.005;
-  traditionalPlanets.forEach(function(p){p.deg=(p.deg+0.003)%360;});
-  modernExtras.forEach(function(p){p.deg=(p.deg+0.001)%360;});
-  drawWheel();
-  requestAnimationFrame(animateWheel);
+function updateSubtitle(d){
+  var months=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  var sub=document.querySelector('.subtitle');
+  if(sub) sub.textContent='TRANSIT WHEEL · OCCULT CELESTIAL ARRAY · '
+    +d.getUTCDate()+' '+months[d.getUTCMonth()]+' '+d.getUTCFullYear();
 }
 
-// ── CANVAS CLICK ──────────────────────────────────────────────────
+function renderAll(){
+  planetOffsets=computeOffsets();
+  computeAspects();
+  buildTable();
+  buildAspects();
+  buildElem();
+  drawWheel();
+}
+
+function wireToggle(){
+  var buttons=document.querySelectorAll('#mtoggle .mbtn');
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var newMode=btn.getAttribute('data-mode');
+      if(newMode===mode) return;
+      mode=newMode;
+      buttons.forEach(function(b){
+        var active=b.getAttribute('data-mode')===mode;
+        b.classList.toggle('active',active);
+        b.setAttribute('aria-checked',active?'true':'false');
+      });
+      rebuildPlanets();
+      if(typeof Astronomy!=='undefined'){
+        computeAllPositions(new Date());
+        renderAll();
+      }
+    });
+  });
+}
+
+function init(){
+  // Astronomy Engine is loaded via <script src="..."> above this block.
+  // If the CDN failed, show a graceful message rather than a broken wheel.
+  if(typeof Astronomy==='undefined'){
+    var body=document.getElementById('rbody');
+    if(body) body.textContent='Unable to load the ephemeris library. Check your internet connection and refresh.';
+    return;
+  }
+  wireToggle();
+  var now=new Date();
+  updateSubtitle(now);
+  computeAllPositions(now);
+  renderAll();
+}
+
+// Clock ticks independently of positions.
+setInterval(updateClock,1000);updateClock();
+
+// Run once the DOM and the external library script have both finished loading.
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',init);
+}else{
+  init();
+}
+
+// Refresh positions every 5 minutes so the Moon (which moves ~0.5°/hour)
+// and the Ascendant-dependent parts stay current during a long session.
+setInterval(function(){
+  if(typeof Astronomy==='undefined') return;
+  var now=new Date();
+  updateSubtitle(now);
+  computeAllPositions(now);
+  renderAll();
+},5*60*1000);
+
 cv.addEventListener('click',function(e){
   var rect=cv.getBoundingClientRect();
-  var mx=e.clientX-rect.left;
-  var my=e.clientY-rect.top;
-  var planets=getActivePlanets();
-  var best=null,bestD=22;
-  planets.forEach(function(p){
-    var pr=(currentMode==='modern'&&p.cat&&p.cat!=='traditional')?R_EXTRA:R_PLANET;
+  var mx=(e.clientX-rect.left)*(cv.width/rect.width);
+  var my=(e.clientY-rect.top)*(cv.height/rect.height);
+  var best=null,bestD=20;
+  planets.forEach(function(p,i){
     var a=toRad(p.deg)*-1+PI/2;
+    var pr=R_PLANET+(planetOffsets[i]||0);
     var x=CX+Math.cos(a)*pr;
     var y=CY+Math.sin(a)*pr;
     var d=Math.sqrt((mx-x)*(mx-x)+(my-y)*(my-y));
@@ -689,36 +778,4 @@ cv.addEventListener('click',function(e){
   });
   if(best) showReading(best);
 });
-
-cv.addEventListener('mousemove',function(e){
-  var rect=cv.getBoundingClientRect();
-  var mx=e.clientX-rect.left;
-  var my=e.clientY-rect.top;
-  var planets=getActivePlanets();
-  var best=null,bestD=20;
-  planets.forEach(function(p){
-    var pr=(currentMode==='modern'&&p.cat&&p.cat!=='traditional')?R_EXTRA:R_PLANET;
-    var a=toRad(p.deg)*-1+PI/2;
-    var x=CX+Math.cos(a)*pr;
-    var y=CY+Math.sin(a)*pr;
-    var d=Math.sqrt((mx-x)*(mx-x)+(my-y)*(my-y));
-    if(d<bestD){bestD=d;best=p;}
-  });
-  if(best){
-    showTooltip(e,best.g+' '+best.n+' · '+getSignName(best.deg)+(best.retro?' ℞':''));
-  } else {
-    hideTooltip();
-  }
-});
-cv.addEventListener('mouseleave',hideTooltip);
-
-// ── INIT ──────────────────────────────────────────────────────────
-buildTable();
-buildAspects();
-buildElem();
-animateWheel();
-setInterval(updateClock,1000);
-updateClock();
 </script>
-</body>
-</html>
